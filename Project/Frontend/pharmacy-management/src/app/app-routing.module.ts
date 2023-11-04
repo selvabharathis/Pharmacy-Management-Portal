@@ -7,17 +7,24 @@ import { ManageMedicineComponent } from './admin/manage-medicine/manage-medicine
 import { InventoryComponent } from './admin/inventory/inventory.component';
 import { SignUpComponent } from './shared/sign-up/sign-up.component';
 import { SignInComponent } from './shared/sign-in/sign-in.component';
+import { NotAuthorizedComponent } from './shared/not-authorized/not-authorized.component';
+import { RoleGuardGuard } from './role-guard.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/medicine', pathMatch: 'full'},
-  { path: 'medicine', component:  MedicineComponent },
-  { path: 'manageCustomer', component:  ManageCustomerComponent },
-  { path: 'cart', component:  CartComponent },
-  { path: 'manageMedicine', component:  ManageMedicineComponent },
-  { path: 'inventory', component:  InventoryComponent },
+  { path: '', redirectTo: '/signIn', pathMatch: 'full'},
+  { path: 'medicine', component:  MedicineComponent, canActivate: [RoleGuardGuard], data: { expected: 'Common' } },
+  { path: 'manageCustomer', component:  ManageCustomerComponent, canActivate: [RoleGuardGuard], data: { expectedRole: 2 } },
+  { path: 'cart', component:  CartComponent, canActivate: [RoleGuardGuard], data: { expectedRole: 2 } },
+  { path: 'manageMedicine', component:  ManageMedicineComponent, canActivate: [RoleGuardGuard], data: { expectedRole: 1 }},
+  { path: 'inventory', component:  InventoryComponent, canActivate: [RoleGuardGuard], data: { expectedRole: 1 } },
   { path: 'signUp', component:  SignUpComponent },
   { path: 'signIn', component:  SignInComponent },
+  { path: 'notAuthorized', component: NotAuthorizedComponent }
 ];
+/*
+role 1 => Admin => [medicine, manageMedicine, inventory]
+role 2 => Pharmacist => [medicine, manageCustomer, cart]
+*/
 
 @NgModule({
   declarations: [],

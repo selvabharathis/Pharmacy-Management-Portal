@@ -71,6 +71,9 @@ DESC pharmacy_management.user;
 
 select * from user;
 
+delete user
+where role_id is null;
+
 
 --------------------------------------------------------
 

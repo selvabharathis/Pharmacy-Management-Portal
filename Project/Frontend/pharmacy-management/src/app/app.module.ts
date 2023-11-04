@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +10,10 @@ import { ManageMedicineComponent } from './admin/manage-medicine/manage-medicine
 import { InventoryComponent } from './admin/inventory/inventory.component';
 import { SignUpComponent } from './shared/sign-up/sign-up.component';
 import { SignInComponent } from './shared/sign-in/sign-in.component';
+import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NotAuthorizedComponent } from './shared/not-authorized/not-authorized.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,17 @@ import { SignInComponent } from './shared/sign-in/sign-in.component';
     ManageMedicineComponent,
     InventoryComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    NavBarComponent,
+    NotAuthorizedComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

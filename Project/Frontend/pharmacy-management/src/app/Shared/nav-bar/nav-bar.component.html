@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BITS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" *ngIf="!isUserLoggedIn">
+            <a class="nav-link active" aria-current="page" routerLink="/signIn" routerLinkActive="active">Sign In</a>
+          </li>
+          <li class="nav-item" *ngIf="!isUserLoggedIn">
+            <a class="nav-link active" aria-current="page" routerLink="/signUp" routerLinkActive="active">Sign Up</a>
+          </li>
+          <li class="nav-item" *ngIf="isUserLoggedIn">
+            <a class="nav-link active" aria-current="page" routerLink="/medicine" routerLinkActive="active">Medicine</a>
+          </li>
+          <li class="nav-item" *ngIf="isUserLoggedIn && userRole == 2">
+            <a class="nav-link active" aria-current="page" routerLink="/manageCustomer" routerLinkActive="active">Manage Customer</a>
+          </li>
+          <li class="nav-item" *ngIf="isUserLoggedIn && userRole == 2">
+            <a class="nav-link active" aria-current="page" routerLink="/cart" routerLinkActive="active">Cart</a>
+          </li>
+          <li class="nav-item" *ngIf="isUserLoggedIn && userRole == 1">
+            <a class="nav-link active" aria-current="page" routerLink="/manageMedicine" routerLinkActive="active">Manage Medicine</a>
+          </li>
+          <li class="nav-item" *ngIf="isUserLoggedIn && userRole == 1">
+            <a class="nav-link active" aria-current="page" routerLink="/inventory" routerLinkActive="active">Inventory</a>
+          </li>
+          <li class="nav-item" *ngIf="isUserLoggedIn">
+            <a class="nav-link active" aria-current="page" (click)="signOut()" style="cursor: pointer;">Sign Out</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search" *ngIf="isUserLoggedIn">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <div class="navbar-text text-light ml-3 me-3" *ngIf="isUserLoggedIn">
+          {{ greetUser }}
+         </div>
+      </div>
+    </div>
+  </nav>

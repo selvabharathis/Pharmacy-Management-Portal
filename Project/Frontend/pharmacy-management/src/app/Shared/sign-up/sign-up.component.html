@@ -1,1 +1,52 @@
-<p>sign-up works!</p>
+<div class="signup">
+    <div class="card bg-dark text-white m-1 mt-5">
+        <div class="card-body">
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">USER NAME</label>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control" placeholder="Enter User Name"  formControlName="username">
+                        </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">EMAIL</label>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control"  placeholder="Enter Email"  formControlName="email">
+                        </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">PHONE NUMBER</label>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control"  placeholder="Enter Phone number"  formControlName="phonenumber">
+                        </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">PASSWORD</label>
+                        <div class="col-sm-1">
+                            <input type="password" class="form-control"  placeholder="Enter Password"  formControlName="password">
+                        </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">USER ROLE</label>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control"  placeholder="Enter Userrole"  formControlName="userrole">
+                        </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">SUBMIT</button>&nbsp;&nbsp;
+                        <button (click)="onReset()" class="btn btn-warning" type="reset">RESET</button>
+                    </div>
+                </div>  
+                <br>
+                <p class="text blue">Value: {{ signUpForm.value | json }}</p>
+                <p class="text blue">Value: {{ signUpForm.valid | json }}</p>
+            </form>
+        </div>
+    </div>
+</div>
